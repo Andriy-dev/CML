@@ -1,0 +1,31 @@
+hostname {router}
+
+username cisco privilege 15 secret cisco
+
+aaa new-model
+aaa authentication login default local
+aaa authorization exec default none 
+aaa session-id common
+
+line vty 0 4
+ privilege level 15
+ transport input telnet ssh
+line vty 5 15
+ privilege level 15
+ transport input telnet ssh
+
+no ip domain lookup
+
+vrf definition management
+  rd 100:100
+  address-family ipv4 unicast
+
+interface Gi10
+ shutdown
+ vrf forwarding management
+ no ip address
+ ip address {ip} 255.255.255.0
+ no shutdown
+!
+ip route vrf management 0.0.0.0 0.0.0.0 192.168.255.1
+end
