@@ -1,0 +1,36 @@
+hostname {router}
+
+aaa authorization exec default none
+aaa authentication login default local
+line default
+ transport input ssh telnet
+!
+ssh server v2
+ssh server vrf default
+ssh server vrf management
+ssh server enable cipher aes-cbc
+
+vrf management
+ address-family ipv4 unicast
+  import route-target
+   100:100
+  !
+  export route-target
+   100:100
+  !
+ !
+!
+interface MgmtEth0/0/CPU0/0
+ vrf management
+ no ipv4 address
+ ipv4 address {ip} 255.255.255.0
+ no shutdown
+!
+router static
+ vrf management
+  address-family ipv4 unicast
+   0.0.0.0/0 192.168.255.100
+  !
+ !
+!
+end
