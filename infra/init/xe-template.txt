@@ -29,4 +29,7 @@ interface Gi4
 !
 no ip route  vrf management 0.0.0.0 0.0.0.0 192.168.255.1
 ip route vrf management 0.0.0.0 0.0.0.0 192.168.255.100
+
+crypto key generate rsa general-keys modulus 4096
+
 end

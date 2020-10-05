@@ -3,8 +3,13 @@
 import requests
 import sys
 from netmiko import ConnectHandler
+import os
 
-lab_id="f9f8fa"
+if os.environ.get('LAB_ID') is None:
+    print('Set LAB_ID environment variable')
+    sys.exit()
+
+lab_id=os.environ.get('LAB_ID')
 
 task={ "username":"admin", "password":"sysadmin" }
 
