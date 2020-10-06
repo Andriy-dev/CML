@@ -23,10 +23,10 @@ console_start_port: 9000
 controller: https://10.0.1.70
 extra_lf: false
 lab_config_name: labs.yaml
-listen_address: '[::1]'
-password: cml2
+listen_address: 10.0.1.202
+password: sysadmin
 populate_all: false
 ui_server_port: 8080
-username: cml2
-verify_tls: true
+username: admin
+verify_tls: false
 vnc_start_port: 5900
